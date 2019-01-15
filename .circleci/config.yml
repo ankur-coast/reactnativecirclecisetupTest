@@ -6,29 +6,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: npm install
-          command: yarn
+          name: Greeting
+          command: 'yarn'
       - run:
           name: Print the Current Time
           command: date
-
-
-  # # Caching root node_modules since they don't change often
-  #     - restore_cache:
-  #         keys:
-  #           - node_modules_root-{{ arch }}-{{ checksum "package.json" }}
-
-  #     - run: yarn install-all
-
-  #     - save_cache:
-  #         key: node_modules_root-{{ arch }}-{{ checksum "package.json" }}
-  #         paths:
-  #           - node_modules
-
-  #     # run tests!
-  #     - run: yarn generate-schema
-  #     - run: yarn lint-ci
-  #     - run: yarn flow-web
-  #     - run: yarn flow-native
-  #     - run: yarn test-frontend-ci
-  #     - run: yarn test-backend
