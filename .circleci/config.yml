@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Greeting
-          command: 'yarn'
+          command: 'npm install'
       - run:
           name: Print the Current Time
           command: date
