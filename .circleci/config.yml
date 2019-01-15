@@ -5,9 +5,19 @@ jobs:
       - image: debian:stretch
     steps:
       - checkout
-      - run:
-          name: Greeting
-          command: 'npm install'
+        # Caching root node_modules since they don't change often
+      - restore_cache:
+          keys:
+            - node_modules_root-{{ arch }}-{{ checksum "package.json" }}
+
+      - run: npm install
+
+      - save_cache:
+          key: node_modules_root-{{ arch }}-{{ checksum "package.json" }}
+          paths:
+            - node_modules
       - run:
           name: Print the Current Time
           command: date
+          
+          
